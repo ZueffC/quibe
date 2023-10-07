@@ -1,31 +1,32 @@
 package main
 
 import (
-	"os"
-
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/handlebars/v2"
 	"github.com/joho/godotenv"
+	"github.com/zueffc/quibe/app"
 )
 
 func main() {
-	app := fiber.New()
+	//set up the handlebars templates engine
+	hb := handlebars.New("./templates", ".html")
+	hb.Reload(true)
+	hb.AddFunc("bbcode", app.BBCodeFinder)
+
+	//load environment variables
 	err := godotenv.Load(".env")
+
+	//set up the web framework
+	fiber_app := fiber.New(
+		fiber.Config{
+			Views: hb,
+		},
+	)
+	fiber_app.Static("/static", "./static")
 
 	if err != nil {
 		println(err)
 	}
 
-	app.Get("/", func(ctx *fiber.Ctx) error {
-		return nil
-	})
-
-	app.Get("/:board", func(ctx *fiber.Ctx) error {
-		return nil
-	})
-
-	app.Get("/:board/topic/:topic_id", func(ctx *fiber.Ctx) error {
-		return nil
-	})
-
-	app.Listen(":" + os.Getenv("APP_PORT"))
+	app.Start(fiber_app)
 }

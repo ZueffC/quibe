@@ -1,0 +1,25 @@
+<header id="navigation" class="p-navigation is-dark">    
+    <div class="p-navigation__row">
+
+        <div class="p-navigation__banner">
+            <div class="p-navigation__tagged-logo">
+                <a class="p-navigation__link" href="/">
+                    <span class="p-navigation__logo-title cap">{{SiteName}}</span>
+                </a>
+            </div>
+            <a href="#navigation" class="p-navigation__toggle--open" title="menu">Branches</a>
+            <a href="#navigation-closed" class="p-navigation__toggle--close" title="close menu">Close menu</a>
+        </div>
+
+        <nav class="p-navigation__nav" aria-label="Example main">
+            <ul class="p-navigation__items">
+                {{#each boards}}
+                    <li class="p-navigation__item">
+                        <a class="p-navigation__link" href="/{{Index}}">{{Name}} - /{{Index}}/</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </nav>
+
+    </div>
+</header>

@@ -1,0 +1,22 @@
+{{> "partials/header"}}
+
+<br />
+
+<div class="container">
+    {{> "partials/add_form"}}
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="p-card is-dark">
+                <h3>{{TStart.Author}} - <a href="../../{{BN}}/topic/{{ID}}">{{TStart.ID}}</a></h3>  
+                <p class="p-card__content">{{TStart.Text}}</p>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    {{#each Messages}}
+        {{> "partials/message"}}
+    {{/each}}
+</div>

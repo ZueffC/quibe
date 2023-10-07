@@ -1,0 +1,13 @@
+.cap ::first-letter {
+    color: #ff1111;
+}
+  
+
+.cap {
+    text-transform: capitalize;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
