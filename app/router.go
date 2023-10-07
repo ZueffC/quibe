@@ -10,7 +10,7 @@ import (
 
 func Route(fiber_app *fiber.App, db *gorm.DB) {
 	fiber_app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.Render("index", fiber.Map{"PageName": "Index"}, "layouts/default")
+		return ctx.Redirect("/b")
 	})
 
 	fiber_app.Get("/:board_name", func(ctx *fiber.Ctx) error {
